@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Troca Livre</string>
+    <string name="NaoTemConta">Não tem uma conta? Crie aqui!</string>
+    <string name="botao_logar">Entrar</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>
