@@ -26,20 +26,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText_celular"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_editext_redondo"
-        android:ems="10"
-        android:hint="Celular"
-        android:inputType="phone"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editText_nome"
-        app:layout_constraintStart_toStartOf="@+id/editText_nome"
-        app:layout_constraintTop_toBottomOf="@+id/editText_nome" />
-
-    <EditText
         android:id="@+id/editText_email"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -49,9 +35,9 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editText_celular"
-        app:layout_constraintStart_toStartOf="@+id/editText_celular"
-        app:layout_constraintTop_toBottomOf="@+id/editText_celular" />
+        app:layout_constraintEnd_toEndOf="@+id/editText_nome"
+        app:layout_constraintStart_toStartOf="@+id/editText_nome"
+        app:layout_constraintTop_toBottomOf="@+id/editText_nome" />
 
     <EditText
         android:id="@+id/editText_senha"
@@ -75,7 +61,7 @@
         android:background="@drawable/bg_editext_redondo"
         android:ems="10"
         android:hint="Confirmar Senha"
-        android:inputType="number"
+        android:inputType="textPassword"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/editText_senha"
         app:layout_constraintHorizontal_bias="0.0"
