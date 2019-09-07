@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "362206192381",
-    "firebase_url": "https://troca-livre.firebaseio.com",
-    "project_id": "troca-livre",
-    "storage_bucket": "troca-livre.appspot.com"
+    "project_number": "1058243719443",
+    "firebase_url": "https://troca-livre-99e89.firebaseio.com",
+    "project_id": "troca-livre-99e89",
+    "storage_bucket": "troca-livre-99e89.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:362206192381:android:85b449c231709c8f",
+        "mobilesdk_app_id": "1:1058243719443:android:85b449c231709c8f",
         "android_client_info": {
           "package_name": "com.example.trocalivre"
         }
       },
       "oauth_client": [
         {
-          "client_id": "362206192381-to1scq46pnel16bpsl70di56dbch233j.apps.googleusercontent.com",
+          "client_id": "1058243719443-d05lal32lpn74375iu82f9pksmp1932i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.trocalivre",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "362206192381-ejdkdfo9g4qkdp65i31du0a2hjbblsv5.apps.googleusercontent.com",
+          "client_id": "1058243719443-7186jutv8ue01vvssnitdlauhmvigenc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB-rwZXzjPvIUGRUUd7PVc9GISrYA3_FDg"
+          "current_key": "AIzaSyDkkx7TXv5TCIFLg6OLtv5c4g7DecsFI7g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "362206192381-ejdkdfo9g4qkdp65i31du0a2hjbblsv5.apps.googleusercontent.com",
+              "client_id": "1058243719443-7186jutv8ue01vvssnitdlauhmvigenc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

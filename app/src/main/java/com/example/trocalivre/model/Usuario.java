@@ -5,12 +5,12 @@ public class Usuario {
     private String email;
     private String senha;
     private int imagem;
-    private Integer telefone;
+    private String telefone;
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha, int imagem, Integer telefone) {
+    public Usuario(String nome, String email, String senha, int imagem, String telefone) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -50,11 +50,11 @@ public class Usuario {
         this.imagem = imagem;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }

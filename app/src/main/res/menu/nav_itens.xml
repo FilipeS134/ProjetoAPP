@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_branco_24dp"
-        android:iconTint="@color/iconAzul"
-        android:title="Home" />
+        android:title="@string/nav_home" />
     <item
         android:id="@+id/nav_anuncio"
-        android:icon="@drawable/ic_home_branco_24dp"
-        android:iconTint="@color/iconAzul"
-        android:title="Anuncio" />
+        android:icon="@drawable/ic_add_branco_24dp"
+        android:title="@string/nav_anuncio" />
     <item
         android:id="@+id/nav_menssagem"
-        android:icon="@drawable/ic_home_branco_24dp"
-        android:iconTint="@color/iconAzul"
-        android:title="Menssagem"
-        />
+        android:icon="@drawable/ic_menssagem_branco_24dp"
+        android:title="@string/nav_menssagem" />
     <item
         android:id="@+id/nav_perfil"
-        android:icon="@drawable/ic_home_branco_24dp"
-        android:iconTint="@color/iconAzul"
-        android:title="Perfil"
-        />
+        android:icon="@drawable/ic_perfil_branco_24dp"
+        android:title="@string/nav_perfil" />
 </menu>
