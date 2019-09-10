@@ -28,7 +28,6 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 public class LoginActivity extends AppCompatActivity {
 
 
-    private static final int REQUISICAO_CODE = 7117 ;
     private EditText email, senha;
     private CircularProgressButton logar;
     private TextView textCriarConta;
