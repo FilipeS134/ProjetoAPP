@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigationView;
     private FrameLayout frameLayout;
 
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

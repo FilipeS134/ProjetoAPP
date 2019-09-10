@@ -68,9 +68,15 @@ public class LoginActivity extends AppCompatActivity {
            }
        });
 
-        }
+    }
 
-        public void login(){
+    @Override
+    protected void onStart() {
+        super.onStart();
+        verificarUserLogado();
+    }
+
+    public void login(){
             String textoEmail = email.getText().toString();
             String textoSenha = senha.getText().toString();
 
@@ -123,6 +129,13 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void verificarUserLogado(){
+        autenticacao = ConfiguracaoFirebase.getAutenticação();
+        if (autenticacao.getCurrentUser() != null){
+            abrirTelaPrincipal();
+        }
     }
 
     public void abrirTelaPrincipal(){
