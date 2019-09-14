@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.trocalivre.R;
 import com.example.trocalivre.config.ConfiguracaoFirebase;
+import com.example.trocalivre.helper.Base64Custom;
 import com.example.trocalivre.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -94,6 +95,9 @@ public class RegistroActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         String excecao = "";
                         if (task.isSuccessful()){
+                            String idUser = Base64Custom.codificarBase64(usuario.getEmail());
+                            usuario.setidUsuario(idUser);
+                            usuario.salvar();
                             criarConta.stopAnimation();
                             finish();
                         }else {

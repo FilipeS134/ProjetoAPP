@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.0.0'
     implementation 'androidx.mediarouter:mediarouter:1.1.0'
     implementation 'br.com.simplepass:loading-button-android:1.14.0'
+    //implementation 'com.heinrichreimersoftware:material-intro:master-SNAPSHOT'
 }
 
 apply plugin: 'com.google.gms.google-services'
