@@ -44,6 +44,7 @@ public class AddAnuncioActivity extends AppCompatActivity {
 
     }
 
+    String teste;
     public void criarAnuncio(){
         String titulo = this.titulo.getText().toString();
         String desc = this.desc.getText().toString();
