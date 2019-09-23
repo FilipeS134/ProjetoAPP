@@ -6,24 +6,65 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
-import java.util.Random;
+import java.util.List;
+
 
 public class Anuncio {
-    private String tituloAnuncio, descricao, trocoPor, cepCidade, idAnuncio;
-    private int imagem;
+    private String tituloAnuncio, descricao, trocoPor, cepCidade, idAnuncio, celular, estado, categoria;
+    private List<String> fotos;
 
+    //construtor
     public Anuncio() {
+        DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase()
+                .child("meus_anuncios");
+        setIdAnuncio(anuncioRef.push().getKey());
     }
 
+    // salvando no fire base
     public void salvar(){
-        FirebaseAuth auth = ConfiguracaoFirebase.getAutenticação();
-        String idUsuario = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-        DatabaseReference anuncio = ConfiguracaoFirebase.getDatabase();
-        anuncio.child("anuncios")
-                .child(idUsuario)
-                .push()
-                .setValue(this);
+            // pegando id do User
+            String idUsuario = ConfiguracaoFirebase.getIdUser();
 
+            // salvando Anuncio
+            DatabaseReference anuncio = ConfiguracaoFirebase.getDatabase().child("meus_anuncios");
+
+            anuncio.child(idUsuario)
+                    .child(getIdAnuncio())
+                    .setValue(this);
+            salvarAnuncioFeed();
+    }
+
+    public void excluir(){
+
+        String idUsuario = ConfiguracaoFirebase.getIdUser();
+        DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("meus_anuncios").child(idUsuario);
+
+        anuncioRef.child(getIdAnuncio());
+
+        anuncioRef.removeValue();
+
+        excluirAnuncioPublico();
+    }
+
+    public void excluirAnuncioPublico(){
+
+        DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("anuncios").child(getEstado())
+                .child(getCategoria());
+
+        anuncioRef.child(getIdAnuncio());
+
+                anuncioRef.removeValue();
+    }
+
+    public void salvarAnuncioFeed(){
+
+        // salvando Anuncio
+        DatabaseReference anuncio = ConfiguracaoFirebase.getDatabase().child("anuncios");
+
+        anuncio.child(getEstado())
+                .child(getCategoria())
+                .child(getIdAnuncio())
+                .setValue(this);
     }
 
     @Exclude
@@ -67,11 +108,35 @@ public class Anuncio {
         this.cepCidade = cepCidade;
     }
 
-    public int getImagem() {
-        return imagem;
+    public List<String> getFotos() {
+        return fotos;
     }
 
-    public void setImagem(int imagem) {
-        this.imagem = imagem;
+    public void setFotos(List<String> fotos) {
+        this.fotos = fotos;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

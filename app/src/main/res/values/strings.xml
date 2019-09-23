@@ -12,4 +12,48 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    ESTADOS
+    <string-array name="estados">
+        <item>AC</item>
+        <item>AL</item>
+        <item>AM</item>
+        <item>AP</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MG</item>
+        <item>MS</item>
+        <item>MT</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>PR</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>RS</item>
+        <item>SC</item>
+        <item>SE</item>
+        <item>SP</item>
+        <item>TO</item>
+    </string-array>
+
+    CATEGORIAS
+    <string-array name="categoria">
+        <item>Automotivo</item>
+        <item>Imóveis, móveis e decoração</item>
+        <item>Eletronicos e Informática</item>
+        <item>Moda, beleza e perfumaria</item>
+        <item>Esportes</item>
+        <item>Música</item>
+        <item>Infantil, brinquedos e bebês</item>
+        <item>games,livros e filmes</item>
+        <item>Outros</item>
+    </string-array>
 </resources>
