@@ -160,8 +160,6 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
                 .build();
         alertDialog.show();
 
-        botaoSalvar.startAnimation();
-
         for (int i=0; i<listaFotos.size(); i++){
             String urlImagem = listaFotos.get(i);
             int tamanhoLista = listaFotos.size();
@@ -204,7 +202,6 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
             public void onFailure(@NonNull Exception e) {
                 exibirMensagemErro("Falha ao fazer upload das imagens");
                 alertDialog.dismiss();
-                botaoSalvar.revertAnimation();
             }
         });
     }

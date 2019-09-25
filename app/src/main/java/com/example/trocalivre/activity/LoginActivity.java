@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logar.startAnimation();
                 login();
 
             }
@@ -84,15 +83,15 @@ public class LoginActivity extends AppCompatActivity {
                     usuario.setEmail(textoEmail);
                     usuario.setSenha(textoSenha);
                     validarLogin();
+                    logar.startAnimation();
 
                 }else {
                     Toast.makeText(getApplicationContext(), "Preencha sua Senha!", Toast.LENGTH_SHORT).show();
-                    logar.stopAnimation();
+
                 }
 
             }else {
                 Toast.makeText(getApplicationContext(), "Preencha seu Email!", Toast.LENGTH_SHORT).show();
-                logar.revertAnimation();
             }
         }
 
@@ -103,20 +102,17 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            logar.stopAnimation();
                             abrirTelaPrincipal();
                         }else {
+                            logar.revertAnimation();
                             String excecao = "";
                             try {
                                 throw task.getException();
                             }catch (FirebaseAuthInvalidUserException e){
-                                logar.revertAnimation();
                                 excecao = "Usuário não está cadastrado.";
                             }catch (FirebaseAuthInvalidCredentialsException e){
-                                logar.revertAnimation();
                                 excecao = "E-mail ou senha não correspondem a um usuário cadastrado!";
                             }catch (Exception e){
-                                logar.revertAnimation();
                                 excecao = "Erro ao logar " + e.getMessage();
                                 e.printStackTrace();
                             }

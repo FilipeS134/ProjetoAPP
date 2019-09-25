@@ -47,7 +47,6 @@ public class RegistroActivity extends AppCompatActivity {
         criarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                criarConta.startAnimation();
                 criarUsuario();
             }
         });
@@ -70,24 +69,21 @@ public class RegistroActivity extends AppCompatActivity {
                             usuario.setSenha(senha);
                             configCadastro();
                     }else {
-                        criarConta.revertAnimation();
                         Toast.makeText(this, "As senhas não conferem", Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    criarConta.revertAnimation();
                     Toast.makeText(this, "O campo senha está vazio", Toast.LENGTH_SHORT).show();
                 }
             }else {
-                criarConta.revertAnimation();
                 Toast.makeText(this, "O campo Email está vazio", Toast.LENGTH_SHORT).show();
             }
         }else {
-            criarConta.revertAnimation();
             Toast.makeText(this, "O campo Nome está vazio", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void configCadastro(){
+        criarConta.startAnimation();
         auntenticao = ConfiguracaoFirebase.getAutenticação();
         auntenticao.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -98,22 +94,18 @@ public class RegistroActivity extends AppCompatActivity {
                             String idUser = Base64Custom.codificarBase64(usuario.getEmail());
                             usuario.setidUsuario(idUser);
                             usuario.salvar();
-                            criarConta.stopAnimation();
                             finish();
                         }else {
+                            criarConta.revertAnimation();
                             try {
                                 throw task.getException();
                             }catch (FirebaseAuthWeakPasswordException e){
-                                criarConta.revertAnimation();
                                 excecao = "Digite uma senha mais forte!";
                             }catch (FirebaseAuthInvalidCredentialsException e){
-                                criarConta.revertAnimation();
                                 excecao = "Por favor, digite um e-mail válido";
                             }catch (FirebaseAuthUserCollisionException e){
-                                criarConta.revertAnimation();
                                 excecao = "Esta conta já foi cadastrada";
                             }catch (Exception e){
-                                criarConta.revertAnimation();
                                 excecao = "Erro ao cadastrar usuário: " + e.getMessage();
                                 e.printStackTrace();
                             }
