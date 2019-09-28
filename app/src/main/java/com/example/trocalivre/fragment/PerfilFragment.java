@@ -1,6 +1,7 @@
 package com.example.trocalivre.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.trocalivre.R;
+import com.example.trocalivre.activity.LoginActivity;
 import com.example.trocalivre.config.ConfiguracaoFirebase;
 import com.example.trocalivre.model.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
@@ -94,6 +96,7 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 auth.signOut();
+                startActivity(new Intent(getContext(), LoginActivity.class));
                 getActivity().onBackPressed();
             }
         });

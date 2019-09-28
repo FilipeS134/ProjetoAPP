@@ -1,11 +1,10 @@
 package com.example.trocalivre.model;
 
+import androidx.annotation.NonNull;
+
 import com.example.trocalivre.config.ConfiguracaoFirebase;
-import com.example.trocalivre.helper.Base64Custom;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
-
 import java.util.List;
 
 
@@ -20,7 +19,7 @@ public class Anuncio {
         setIdAnuncio(anuncioRef.push().getKey());
     }
 
-    // salvando no fire base
+    // salvando no firebase
     public void salvar(){
             // pegando id do User
             String idUsuario = ConfiguracaoFirebase.getIdUser();
@@ -37,10 +36,9 @@ public class Anuncio {
     public void excluir(){
 
         String idUsuario = ConfiguracaoFirebase.getIdUser();
-        DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("meus_anuncios").child(idUsuario);
+        DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("meus_anuncios");
 
-        anuncioRef.child(getIdAnuncio());
-
+        anuncioRef.child(idUsuario).child(getIdAnuncio());
         anuncioRef.removeValue();
 
         excluirAnuncioPublico();
@@ -48,12 +46,13 @@ public class Anuncio {
 
     public void excluirAnuncioPublico(){
 
-        DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("anuncios").child(getEstado())
-                .child(getCategoria());
+        DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("anuncios");
 
-        anuncioRef.child(getIdAnuncio());
+        anuncioRef.child(getEstado())
+                .child(getCategoria())
+                .child(getIdAnuncio());
 
-                anuncioRef.removeValue();
+        anuncioRef.removeValue();
     }
 
     public void salvarAnuncioFeed(){

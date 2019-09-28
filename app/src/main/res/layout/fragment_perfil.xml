@@ -35,12 +35,13 @@
         android:layout_gravity="bottom|end"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_button_redondo"
         android:text="Sair"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_perfil" />
 
     <ImageView
         android:id="@+id/imageView_perfil"

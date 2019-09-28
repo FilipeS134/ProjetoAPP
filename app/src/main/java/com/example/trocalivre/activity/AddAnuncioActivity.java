@@ -41,7 +41,7 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import dmax.dialog.SpotsDialog;
 
 public class AddAnuncioActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText titulo,desc,trocoPor;
+    private EditText titulo, desc, trocoPor;
     private ImageView imagem1, imagem2, imagem3;
     private MaskEditText cep, celular;
     private CircularProgressButton botaoSalvar;
@@ -78,7 +78,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.imageView_cadastro1:
                 escolherImagem(1);
                 break;
@@ -91,7 +91,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void escolherImagem(int requestCode){
+    public void escolherImagem(int requestCode) {
         Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, requestCode);
     }
@@ -100,18 +100,18 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
 
             // recuperar a imagem
             Uri imagemSelecionada = data.getData();
             String caminhoImagen = imagemSelecionada.toString();
 
             //Configura imagem no ImageView
-            if (requestCode == 1){
+            if (requestCode == 1) {
                 imagem1.setImageURI(imagemSelecionada);
-            }else if (requestCode == 2){
+            } else if (requestCode == 2) {
                 imagem2.setImageURI(imagemSelecionada);
-            }else if (requestCode == 3){
+            } else if (requestCode == 3) {
                 imagem3.setImageURI(imagemSelecionada);
             }
 
@@ -125,17 +125,17 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
         String[] categorias = getResources().getStringArray(R.array.categoria);
 
         // configurando Estados
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, estados);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, estados);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         campoEstado.setAdapter(adapter);
 
         // configurando Estados
-        ArrayAdapter<String> adapterCat = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, categorias);
+        ArrayAdapter<String> adapterCat = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
         adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         campoCategoria.setAdapter(adapterCat);
     }
 
-    private void initComp(){
+    private void initComp() {
         titulo = findViewById(R.id.editText_titulo);
         desc = findViewById(R.id.editText_desc);
         trocoPor = findViewById(R.id.editText_trocoPor);
@@ -152,7 +152,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
         imagem3.setOnClickListener(this);
     }
 
-    public void salvarAnuncio(){
+    public void salvarAnuncio() {
         alertDialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setCancelable(false)
@@ -160,7 +160,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
                 .build();
         alertDialog.show();
 
-        for (int i=0; i<listaFotos.size(); i++){
+        for (int i = 0; i < listaFotos.size(); i++) {
             String urlImagem = listaFotos.get(i);
             int tamanhoLista = listaFotos.size();
             salvarFotoStorage(urlImagem, tamanhoLista, i);
@@ -168,33 +168,33 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    private void salvarFotoStorage(String urlString, final int totalFotos, int contador){
+    private void salvarFotoStorage(String urlString, final int totalFotos, int contador) {
         final int count = contador;
 
         //criar referencia Storage
         StorageReference imagenAnuncio = storage.child("imagens")
                 .child("anuncios")
                 .child(anuncio.getIdAnuncio())
-                .child("imagen"+contador);
+                .child("imagen" + contador);
 
         UploadTask uploadTask = imagenAnuncio.putFile(Uri.parse(urlString));
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
-                            listaURLFotos.add(task.getResult().toString());
+                taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        listaURLFotos.add(task.getResult().toString());
 
-                            if (totalFotos == listaFotos.size()){
-                                anuncio.setFotos(listaURLFotos);
-                                anuncio.salvar();
-                                alertDialog.dismiss();
-                                exibirMensagemErro("Anúncio salvo com sucesso!");
-                                finish();
-                            }
+                        if (totalFotos == listaFotos.size()) {
+                            anuncio.setFotos(listaURLFotos);
+                            anuncio.salvar();
+                            alertDialog.dismiss();
+                            exibirMensagemErro("Anúncio salvo com sucesso!");
+                            finish();
                         }
-                    });
+                    }
+                });
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -206,46 +206,46 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    public void validarCampos(View view){
-       anuncio = configurarAnuncio();
+    public void validarCampos(View view) {
+        anuncio = configurarAnuncio();
 
-        if (listaFotos.size() != 0){
-            if (!anuncio.getTituloAnuncio().isEmpty()){
-                if (!anuncio.getDescricao().isEmpty()){
-                    if (!anuncio.getTrocoPor().isEmpty()){
-                        if (!anuncio.getCepCidade().isEmpty()){
-                            if (!anuncio.getEstado().isEmpty()){
-                                if (!anuncio.getCategoria().isEmpty()){
-                                    if (!anuncio.getCelular().isEmpty() && anuncio.getCelular().length() >= 10){
+        if (listaFotos.size() != 0) {
+            if (!anuncio.getTituloAnuncio().isEmpty()) {
+                if (!anuncio.getDescricao().isEmpty()) {
+                    if (!anuncio.getTrocoPor().isEmpty()) {
+                        if (!anuncio.getCepCidade().isEmpty()) {
+                            if (!anuncio.getEstado().isEmpty()) {
+                                if (!anuncio.getCategoria().isEmpty()) {
+                                    if (!anuncio.getCelular().isEmpty() && anuncio.getCelular().length() >= 10) {
                                         salvarAnuncio();
-                                    }else {
+                                    } else {
                                         exibirMensagemErro("Digite um telefone de contato valido!");
                                     }
-                                }else {
+                                } else {
                                     exibirMensagemErro("Selecione uma categoria!");
                                 }
-                            }else {
+                            } else {
                                 exibirMensagemErro("Selecione um estado!");
                             }
-                        }else {
+                        } else {
                             exibirMensagemErro("Digite um CEP");
                         }
-                    }else {
+                    } else {
                         exibirMensagemErro("O campo de Interesses está vazio");
                     }
-                }else {
+                } else {
                     exibirMensagemErro("A descrição está vazia");
                 }
-            }else {
+            } else {
                 exibirMensagemErro("O Título está vazio");
             }
-        }else {
+        } else {
             exibirMensagemErro("Selecione uma foto!");
         }
 
     }
 
-    private Anuncio configurarAnuncio(){
+    private Anuncio configurarAnuncio() {
         String titulo = this.titulo.getText().toString();
         String desc = this.desc.getText().toString();
         String trocoPor = this.trocoPor.getText().toString();
@@ -266,7 +266,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
         return anuncio;
     }
 
-    private void exibirMensagemErro(String menssagem){
+    private void exibirMensagemErro(String menssagem) {
         Toast.makeText(this, menssagem, Toast.LENGTH_LONG).show();
     }
 
@@ -274,14 +274,14 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        for (int permissaoResult : grantResults){
-            if (permissaoResult == PackageManager.PERMISSION_DENIED){
+        for (int permissaoResult : grantResults) {
+            if (permissaoResult == PackageManager.PERMISSION_DENIED) {
                 alertaValidacaoPermissao();
             }
         }
     }
 
-    private void alertaValidacaoPermissao(){
+    private void alertaValidacaoPermissao() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permissões Negadas");
         builder.setMessage("Para utilizar o app é necessário aceitar as permissões");
