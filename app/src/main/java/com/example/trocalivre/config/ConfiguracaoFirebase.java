@@ -1,5 +1,6 @@
 package com.example.trocalivre.config;
 
+import com.example.trocalivre.helper.Base64Custom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,7 +14,11 @@ public class ConfiguracaoFirebase {
     private static StorageReference storage;
 
     public static String getIdUser(){
-        return autenticacao.getCurrentUser().getUid();
+        String emailUser = autenticacao.getCurrentUser().getEmail();
+        String idUser = Base64Custom.codificarBase64(emailUser);
+
+        return idUser;
+
     }
 
     public static FirebaseAuth getAutenticação(){

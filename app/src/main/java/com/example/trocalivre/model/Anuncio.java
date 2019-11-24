@@ -1,6 +1,7 @@
 package com.example.trocalivre.model;
 
-import androidx.annotation.NonNull;
+
+import android.util.Log;
 
 import com.example.trocalivre.config.ConfiguracaoFirebase;
 import com.google.firebase.database.DatabaseReference;
@@ -38,8 +39,10 @@ public class Anuncio {
         String idUsuario = ConfiguracaoFirebase.getIdUser();
         DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("meus_anuncios");
 
-        anuncioRef.child(idUsuario).child(getIdAnuncio());
-        anuncioRef.removeValue();
+                anuncioRef.child(idUsuario)
+                        .child(this.getIdAnuncio());
+
+        anuncioRef.removeValue().isSuccessful();
 
         excluirAnuncioPublico();
     }
@@ -48,11 +51,12 @@ public class Anuncio {
 
         DatabaseReference anuncioRef = ConfiguracaoFirebase.getDatabase().child("anuncios");
 
-        anuncioRef.child(getEstado())
-                .child(getCategoria())
-                .child(getIdAnuncio());
+        anuncioRef.child(this.getEstado())
+                .child(this.getCategoria())
+                .child(this.getIdAnuncio());
 
-        anuncioRef.removeValue();
+                anuncioRef.removeValue();
+
     }
 
     public void salvarAnuncioFeed(){

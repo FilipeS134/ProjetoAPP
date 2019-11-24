@@ -33,6 +33,7 @@
                 android:id="@+id/textTituloAdpter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="Tv LCD phillips 47 polegadas dasd"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -41,10 +42,19 @@
                 android:id="@+id/textDescAdpter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp"
                 android:text="Usada"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textCidadeAdpter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_localizacao_branco_24dp"
+                android:gravity="bottom"
+                android:text="Itaperuna-RJ"
+                android:textColor="#7A7373" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

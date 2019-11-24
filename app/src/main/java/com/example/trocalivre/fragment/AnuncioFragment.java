@@ -33,9 +33,7 @@ import java.util.List;
 
 import dmax.dialog.SpotsDialog;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AnuncioFragment extends Fragment {
 
     private FloatingActionButton addAnuncio;

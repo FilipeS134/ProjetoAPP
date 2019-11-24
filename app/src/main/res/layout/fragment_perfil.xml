@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/foto_redondo">
+    android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -49,7 +48,7 @@
         android:layout_height="150dp"
         android:layout_margin="16dp"
         android:layout_weight="1"
-        android:background="@drawable/foto_redondo"
+        android:background="@drawable/padrao"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
