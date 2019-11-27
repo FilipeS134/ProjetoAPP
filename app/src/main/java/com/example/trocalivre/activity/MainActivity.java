@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         navigationView = findViewById(R.id.navigation);
         frameLayout = findViewById(R.id.frameLayout);
 

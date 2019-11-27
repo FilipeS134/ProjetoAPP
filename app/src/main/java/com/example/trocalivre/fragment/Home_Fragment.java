@@ -63,7 +63,7 @@ public class Home_Fragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        
         // config Inicial
         buttonCategoria = view.findViewById(R.id.button_Categoria);
         buttonEstado = view.findViewById(R.id.button_Estado);
