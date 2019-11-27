@@ -37,6 +37,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/bg_button_redondo"
         android:text="Sair"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
