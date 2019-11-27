@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 
 import com.example.trocalivre.R;
 import com.example.trocalivre.activity.AddAnuncioActivity;
+import com.example.trocalivre.activity.DetalheAnuncioActivity;
 import com.example.trocalivre.adapter.AnuncioAdapter;
 import com.example.trocalivre.config.ConfiguracaoFirebase;
 import com.example.trocalivre.helper.RecyclerItemClickListener;
@@ -77,6 +78,10 @@ public class AnuncioFragment extends Fragment {
         recyclerViewAnuncios.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerViewAnuncios, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                Anuncio anuncioSelecionado = anuncios.get(position);
+                Intent i = new Intent(getContext(), DetalheAnuncioActivity.class);
+                i.putExtra("anuncio", anuncioSelecionado);
+                startActivity(i);
 
             }
 
@@ -84,7 +89,7 @@ public class AnuncioFragment extends Fragment {
             public void onLongItemClick(View view, int position) {
                 Anuncio anuncioSelecionado = anuncios.get(position);
 
-                anuncioSelecionado.excluir();
+               // anuncioSelecionado.excluir();
                 anuncioAdapter.notifyDataSetChanged();
             }
 
