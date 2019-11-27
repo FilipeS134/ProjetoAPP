@@ -15,9 +15,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.DetalheAnuncioActivity"></activity>
         <activity android:name=".activity.AddAnuncioActivity" />
-        <activity android:name=".activity.RegistroActivity" />
+        <activity android:name=".activity.RegistroActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
