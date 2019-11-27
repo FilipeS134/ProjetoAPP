@@ -3,10 +3,12 @@ package com.example.trocalivre.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.trocalivre.R;
+import com.example.trocalivre.activity.DetalheAnuncioActivity;
 import com.example.trocalivre.adapter.AnuncioAdapter;
 import com.example.trocalivre.config.ConfiguracaoFirebase;
 import com.example.trocalivre.helper.RecyclerItemClickListener;
@@ -57,7 +60,7 @@ public class Home_Fragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -91,12 +94,16 @@ public class Home_Fragment extends Fragment {
         });
 
         recyclerViewFeed.addOnItemTouchListener(new RecyclerItemClickListener(
-                getContext(),
+                view.getContext(),
                 recyclerViewFeed,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+
                         Anuncio anuncioSelecionado = listaAnuncios.get(position);
+                        Intent i = new Intent(getContext(), DetalheAnuncioActivity.class);
+                        i.putExtra("anuncio", anuncioSelecionado);
+                        startActivity(i);
 
                     }
 
@@ -113,7 +120,6 @@ public class Home_Fragment extends Fragment {
         
         return view;
     }
-
     private void FiltrarPorEstado() {
 
         alertDialog = new SpotsDialog.Builder()

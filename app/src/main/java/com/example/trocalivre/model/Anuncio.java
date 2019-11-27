@@ -6,11 +6,13 @@ import android.util.Log;
 import com.example.trocalivre.config.ConfiguracaoFirebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
+
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Anuncio {
-    private String tituloAnuncio, descricao, trocoPor, cepCidade, idAnuncio, celular, estado, categoria;
+public class Anuncio implements Serializable {
+    private String tituloAnuncio, descricao, trocoPor, cidade, idAnuncio, celular, estado, categoria;
     private List<String> fotos;
 
     //construtor
@@ -103,12 +105,12 @@ public class Anuncio {
         this.trocoPor = trocoPor;
     }
 
-    public String getCepCidade() {
-        return cepCidade;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setCepCidade(String cepCidade) {
-        this.cepCidade = cepCidade;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public List<String> getFotos() {

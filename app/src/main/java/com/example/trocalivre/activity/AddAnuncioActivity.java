@@ -41,9 +41,9 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import dmax.dialog.SpotsDialog;
 
 public class AddAnuncioActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText titulo, desc, trocoPor;
+    private EditText titulo, desc, trocoPor, cidade;
     private ImageView imagem1, imagem2, imagem3;
-    private MaskEditText cep, celular;
+    private MaskEditText celular;
     private CircularProgressButton botaoSalvar;
     private Anuncio anuncio;
     private Spinner campoEstado, campoCategoria;
@@ -139,7 +139,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
         titulo = findViewById(R.id.editText_titulo);
         desc = findViewById(R.id.editText_desc);
         trocoPor = findViewById(R.id.editText_trocoPor);
-        cep = findViewById(R.id.editText_cep);
+        cidade = findViewById(R.id.editText_cidade);
         celular = findViewById(R.id.editText_celular);
         botaoSalvar = findViewById(R.id.button_salvarAnuncio);
         campoEstado = findViewById(R.id.spinner_estados);
@@ -213,7 +213,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
             if (!anuncio.getTituloAnuncio().isEmpty()) {
                 if (!anuncio.getDescricao().isEmpty()) {
                     if (!anuncio.getTrocoPor().isEmpty()) {
-                        if (!anuncio.getCepCidade().isEmpty()) {
+                        if (!anuncio.getCidade().isEmpty()) {
                             if (!anuncio.getEstado().isEmpty()) {
                                 if (!anuncio.getCategoria().isEmpty()) {
                                     if (!anuncio.getCelular().isEmpty() && anuncio.getCelular().length() >= 10) {
@@ -228,7 +228,7 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
                                 exibirMensagemErro("Selecione um estado!");
                             }
                         } else {
-                            exibirMensagemErro("Digite um CEP");
+                            exibirMensagemErro("Digite uma cidade");
                         }
                     } else {
                         exibirMensagemErro("O campo de Interesses está vazio");
@@ -249,13 +249,13 @@ public class AddAnuncioActivity extends AppCompatActivity implements View.OnClic
         String titulo = this.titulo.getText().toString();
         String desc = this.desc.getText().toString();
         String trocoPor = this.trocoPor.getText().toString();
-        String cep = this.cep.getRawText();
+        String cidade = this.cidade.getText().toString();
         String celular = this.celular.getRawText();
         String estado = this.campoEstado.getSelectedItem().toString();
         String categoria = this.campoCategoria.getSelectedItem().toString();
 
         Anuncio anuncio = new Anuncio();
-        anuncio.setCepCidade(cep);
+        anuncio.setCidade(cidade);
         anuncio.setTrocoPor(trocoPor);
         anuncio.setDescricao(desc);
         anuncio.setTituloAnuncio(titulo);

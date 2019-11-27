@@ -41,7 +41,7 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.AnuncioV
 
         holder.titulo.setText(anuncio.getTituloAnuncio());
         holder.desc.setText(anuncio.getDescricao());
-        holder.cepCidade.setText(anuncio.getCepCidade());
+        holder.cidade.setText(anuncio.getCidade());
 
         //pegar a primeira imagen da lista
         List<String> urlFotos = anuncio.getFotos();
@@ -61,7 +61,7 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.AnuncioV
     public class AnuncioViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imagen;
-        TextView titulo, desc, cepCidade;
+        TextView titulo, desc, cidade;
 
         public AnuncioViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,7 +69,7 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.AnuncioV
             imagen = itemView.findViewById(R.id.imageAnuncioAdpter);
             titulo = itemView.findViewById(R.id.textTituloAdpter);
             desc = itemView.findViewById(R.id.textDescAdpter);
-            cepCidade = itemView.findViewById(R.id.textCidadeAdpter);
+            cidade = itemView.findViewById(R.id.textCidadeAdpter);
         }
     }
 }
